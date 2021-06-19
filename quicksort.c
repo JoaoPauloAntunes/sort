@@ -29,7 +29,7 @@ int DIVIDE(int A[], int p, int r) {
   A[i] = *pivo;
   *pivo = aux;
 
-  printf("parte 2: incrementou i (%d) e mudou A[%d] (%d) de posição com A[%d] (%d)!\n", i, i, A[i], r, A[r]);
+  printf("parte 2: incrementou i (%d) e mudou A[%d] (%d) de posição com A[%d] (%d)!\n", i, i, A[i], r, *pivo);
 
   return i;
 }
