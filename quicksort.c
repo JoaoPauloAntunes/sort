@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void printIntVector(int vector[], int len) {
+  printf("{ ");
+
+  if (len > 0) {
+    printf("%d", vector[0]);
+
+    for (int i = 1; i < len; i ++) {
+      printf(", %d", vector[i]);
+    }
+  }
+
+  printf(" }\n");
+}
+
 int DIVIDE(int A[], int p, int r) {
   int *pivo = &A[r];
   int i = p - 1;
@@ -34,19 +48,16 @@ int DIVIDE(int A[], int p, int r) {
   return i;
 }
 
-void QUICKSORT(int A[], int p, int r) {
+void QUICKSORT(int A[], int p, int r, int lenOfA) {
   int q = 0;
 
   if (p <= r) {
     q = DIVIDE(A, p, r);
-    /* for (int i = 0; i < 12; i ++) {
-      printf("A[%d] = %d\n", i, A[i]);
-    }
-    printf("q: %d\n", q); */
-    // exit(1);
 
-    QUICKSORT(A, p, q - 1);
-    QUICKSORT(A, q + 1, r);
+    printIntVector(A, lenOfA);
+
+    QUICKSORT(A, p, q - 1, lenOfA);
+    QUICKSORT(A, q + 1, r, lenOfA);
   }
 }
 
@@ -65,20 +76,15 @@ int main() {
   // int A[] = {1, 2, 3, 4};
   // int A[] = {4, 3, 2, 1};
   int A[] = {33, 44, 55, 77, 95, 99, 22, 25, 41, 66, 88, 89};
-  int len = sizeof (A) / sizeof (int);
+  int lenOfA = sizeof (A) / sizeof (int);
   int p = 0;
-  int r = len - 1;
+  int r = lenOfA - 1;
 
-  printf("len: %d\n", len);
-  for (int i = 0; i < len; i ++) {
-    printf("A[%d] = %d\n", i, A[i]);
-  }
+  printf("lenOfA: %d\n", lenOfA);
+  printIntVector(A, lenOfA);
 
-  
-  QUICKSORT(A, p, r);
-  for (int i = 0; i < len; i ++) {
-    printf("A[%d] = %d\n", i, A[i]);
-  }
+  QUICKSORT(A, p, r, lenOfA);
+  printIntVector(A, lenOfA);
 
   return 0;
 }
