@@ -32,7 +32,7 @@ int DIVIDE(int A[], int p, int r) {
       A[i] = A[j];
       A[j] = aux;
 
-      printf("parte 1: incrementou i (%d) e mudou A[%d] (%d) de posição com A[%d] (%d)!\n", i, i, A[i], j, *pivo);
+      printf(">> parte 1: incrementou i (%d) e mudou A[%d] (%d) de posição com A[%d] (%d)!\n", i, i, A[i], j, *pivo);
     }
   }
   // printf("endfor\n");
@@ -43,7 +43,7 @@ int DIVIDE(int A[], int p, int r) {
   A[i] = *pivo;
   *pivo = aux;
 
-  printf("parte 2: incrementou i (%d) e mudou A[%d] (%d) de posição com o pivô (%d)!\n", i, i, A[i], *pivo);
+  printf(">> parte 2: incrementou i (%d) e mudou A[%d] (%d) de posição com o pivô (%d)!\n", i, i, A[i], *pivo);
 
   return i;
 }
@@ -53,7 +53,7 @@ void QUICKSORT(int A[], int p, int r, int lenOfA) {
 
   if (p <= r) {
     q = DIVIDE(A, p, r);
-
+    printf(">> Após DIVIDE: \n");
     printIntVector(A, lenOfA);
 
     QUICKSORT(A, p, q - 1, lenOfA);
